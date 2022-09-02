@@ -56,17 +56,16 @@ def imprimir_altura(lista_heroes,type):
     elif type == "min":
         return print('HEROE MAS BAJO ES {} CON {} '.format(heroe_mas_bajo["nombre"],heroe_mas_bajo["altura"]))
     elif type == "ambos":
-        return print('EL HEROE MAS ALTO SU NOMBRE ES {}, Y EL MAS BAJO SU NOMBRE ES {}'.format( heroe_mas_alto["identidad"], heroe_mas_bajo["identidad"] ))
+        return print('EL HEROE MAS ALTO SU IDENTIDAD ES {}, Y EL MAS BAJO SU IDENTIDAD ES {}'.format( heroe_mas_alto["identidad"], heroe_mas_bajo["identidad"] ))
 
 
 #7
 def imprimir_mas_menos_pesado(lista_heroes):
 
-    heroe_mas_pesado = lista_heroes[0]
-    heroe_mas_pesado["peso"] = float(heroe_mas_pesado["peso"])
+    lista_heroes[0]["peso"] = float(lista_heroes[0]["peso"])
 
+    heroe_mas_pesado = lista_heroes[0]
     heroe_menos_pesado = lista_heroes[0]
-    heroe_menos_pesado["peso"] = float(heroe_menos_pesado["peso"])
 
     for heroe in lista_heroes:
 
