@@ -77,18 +77,15 @@ def imprimir_tipo_agrupado(tipo):
         if (not any(heroe[tipo].lower() in color.lower() for color in colores)):
             colores.append(heroe[tipo])
 
-
     color_agrupado = {}
 
     for heroe in lista_heroes:
-
         for color in colores:
             if( heroe[tipo].lower() == color.lower() ):
                 try:
                     color_agrupado[color].append(heroe)
                 except:
                     color_agrupado[color] = [heroe]
-
 
     print(color_agrupado)
         
