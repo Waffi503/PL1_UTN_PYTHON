@@ -50,9 +50,6 @@ def imprimir_altura(lista_heroes, genero, type):
     elif type == "promedio":
         altura_promedio = altura_total / cantidad
         return print('LA ALTURA PROMEDIO DEL GENERO {0} es {1} '.format(genero, altura_promedio))
-    # elif type == "ambos":
-    #     return print('EL HEROE MAS ALTO SU IDENTIDAD ES {}, Y EL MAS BAJO SU IDENTIDAD ES {}'.format( heroe_mas_alto["identidad"], heroe_mas_bajo["identidad"] ))
-
 
 def cantidad_tipo(tipo):
 
@@ -66,26 +63,41 @@ def cantidad_tipo(tipo):
 
     print(diccionario)
 
+# def imprimir_tipo_agrupado(tipo):
+
+#     colores = []
+
+#     for heroe in lista_heroes:
+#         if(heroe[tipo] == ""):
+#             heroe[tipo] = "No tiene"
+
+#         if (not any(heroe[tipo].lower() in color.lower() for color in colores)):
+#             colores.append(heroe[tipo])
+
+#     color_agrupado = {}
+
+#     for heroe in lista_heroes:
+#         for color in colores:
+#             if( heroe[tipo].lower() == color.lower() ):
+#                 try:
+#                     color_agrupado[color].append(heroe)
+#                 except:
+#                     color_agrupado[color] = [heroe]
+
+#     print(color_agrupado)
+
+
 def imprimir_tipo_agrupado(tipo):
-
-    colores = []
-
-    for heroe in lista_heroes:
-        if(heroe[tipo] == ""):
-            heroe[tipo] = "No tiene"
-
-        if (not any(heroe[tipo].lower() in color.lower() for color in colores)):
-            colores.append(heroe[tipo])
 
     color_agrupado = {}
 
     for heroe in lista_heroes:
-        for color in colores:
-            if( heroe[tipo].lower() == color.lower() ):
-                try:
-                    color_agrupado[color].append(heroe)
-                except:
-                    color_agrupado[color] = [heroe]
+        if(heroe[tipo] == ""):
+            heroe[tipo] = "No tiene"
+        try:
+            color_agrupado[heroe[tipo].lower()].append(heroe)
+        except:
+            color_agrupado[heroe[tipo].lower()] = [heroe]
 
     print(color_agrupado)
         
