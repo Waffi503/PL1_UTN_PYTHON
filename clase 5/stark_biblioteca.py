@@ -193,6 +193,14 @@ def stark_calcular_imprimir_heroe ( lista : list = [], tipo : str = "", dato : s
     imprimir_dato("{0} {1}: {2}".format(tipo,dato,msg ))
 
 
+def sumar_dato_heroe( lista : list = [], dato : str = "" ):
+
+    acumulado = 0
+    for element in lista:
+        acumulado += element[dato]
+
+    return acumulado
+
 
 
 
