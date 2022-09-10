@@ -197,12 +197,36 @@ def sumar_dato_heroe( lista : list = [], dato : str = "" ):
 
     acumulado = 0
     for element in lista:
-        acumulado += element[dato]
+        if( type(element) == dict and element != {} ):
+            acumulado += element[dato]
 
     return acumulado
 
+def dividir( dividiendo : int = 0, divisor : int = 0):
 
+    resultado = 0
+    if(divisor == 0):
+        return resultado
 
+    resultado = dividiendo / divisor
+    return resultado
+
+def calcular_promedio( lista : list = [], dato : str = "" ):
+
+    total = sumar_dato_heroe(lista,dato)
+    cantidad_datos = len(lista)
+    promedio = dividir(total,cantidad_datos)
+
+    return promedio
+
+def stark_calcular_imprimir_promedio_altura( lista : list = [] ):
+
+    if(type(lista) != list or lista == []):
+        return -1
+
+    imprimir_dato(calcular_promedio(lista,"altura"))
+
+def stark_menu_principal():
 
 
 
