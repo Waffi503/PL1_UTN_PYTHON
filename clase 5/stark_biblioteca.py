@@ -226,7 +226,20 @@ def stark_calcular_imprimir_promedio_altura( lista : list = [] ):
 
     imprimir_dato(calcular_promedio(lista,"altura"))
 
-def stark_menu_principal():
+def imprimir_menu():
+    imprimir_dato('ingrese x para a')
+    imprimir_dato('ingrese x para a')
+    imprimir_dato('ingrese x para a')
+    imprimir_dato('ingrese x para a')
+    imprimir_dato('ingrese x para a')
+    imprimir_dato('ingrese x para a')
+    imprimir_dato('ingrese x para a')
+    imprimir_dato('ingrese x para a')
+
+def validar_entero ( entero : str = '' ):
+    if entero.isdigit():
+        return True
+    return False
 
 
 
