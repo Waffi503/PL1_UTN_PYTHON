@@ -1,3 +1,4 @@
+import re
 from data_stark import lista_heroes
 
 def extraer_iniciales( nombre_heroe : int = "" ):
@@ -78,7 +79,73 @@ def generar_codigo_heroe(id_heroe : int = 0, genero_heroe : str = ''):
     codigo_heroe = genero_code + id_heroe
     return codigo_heroe
 
-def agregar_codigo_heroe( heroe : dict = {} ):
-    
+def agregar_codigo_heroe( heroe : dict = {}, id_heroe : int = 0 ):
+    if(heroe == {}):
+        return False
 
+    heroe["codigo_heroe"] = generar_codigo_heroe(id_heroe,heroe["genero"])
+    
+    if len(heroe["codigo_heroe"]) != 10:
+        return False
+    
+    return True
+
+def stark_generar_codigos_heroes( lista_heroe : list =[] ):
+    index = 1
+    cantidad = 0
+    if(len(lista_heroe) > 1):
+        for heroe in lista_heroe:
+            if( heroe["genero"] and agregar_codigo_heroe(heroe, index)):
+                cantidad += 1
+            index += 1
+        print(f"Se asignaron {cantidad} codigos")
+        print(f"El codigo del primer heroe es {lista_heroe[0]['codigo_heroe']}")
+        print(f"El codigo del ultimo heroe es {lista_heroe[cantidad - 1]['codigo_heroe']}")
+    else:
+        print('El origen de datos no contiene el formato correcto')
+
+def sanitizar_entero( numero_str : str = "" ):
+    numero = numero_str.strip()
+    try:
+        if(not numero_str.isnumeric()):
+            return -2
+
+        numero = int(numero)
+
+        if(numero < 0):
+            return -2
+        return numero
+    except:
+        return -3
+
+def sanitizar_flotante(numero_str):
+    numero = numero_str.strip()
+
+    try:
+        numero_validacion = re.search('[a-zA-Z]', numero)
+        if(numero_validacion > 0):
+            return -1
+
+        numero = float(numero)
+        if( numero < 0):
+            return -2
+
+        return numero
+    except:
+        return -3
+
+def sanitizar_string(valor_str : str = "",valor_por_defecto : str = "-"):
+    valor_str = valor_str.strip()
+    valor_por_defecto = valor_por_defecto.strip()
+
+    if (valor_str == ""):
+        return valor_por_defecto.lower()
+
+    if (len(re.search('[0-9]', valor_str)) > 0):
+        return 'N/A'
+    valor_str = valor_str.replace("/", " ")
+
+    return  valor_str.lower()
+
+def sanitizar_dato(heroe: dict, clave: str, tipo_dato: str):
     
